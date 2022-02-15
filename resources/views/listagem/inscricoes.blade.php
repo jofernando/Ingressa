@@ -14,7 +14,7 @@
             text-align: center;
             width: 100%;
             position: fixed;
-            top: -120px;
+            top: -150px;
             left: 0px;
             right: -15px;
         }
@@ -86,7 +86,7 @@
             text-align: left;
             float: left;
         }
-        
+
         .back-color-1 {
             background-color: white;
         }
@@ -105,7 +105,7 @@
 
 </head>
 <body>
-    <div id="head">        
+    <div id="head">
         <img src="{{public_path('img/cabecalho_listagem.png')}}" width="100%" alt="">
         <span class="titulo">
             LISTA DE CONVOCADOS<br><span style="font-weight: normal; text-transform:uppercase;" >{{$chamada->nome}}</span><br>
@@ -114,22 +114,27 @@
     <div id="body">
         @foreach ($collect_inscricoes as $i => $collect)
             @if ($collect->count() > 0)
-                <h3 class="subtitulo">Curso: {{$collect->first()->first()->curso->nome}} - @switch($collect->first()->first()->curso->turno)
-                    @case(App\Models\Curso::TURNO_ENUM['matutino'])
-                        Matutino
-                        @break
-                    @case(App\Models\Curso::TURNO_ENUM['vespertino'])
-                        Vespertino
-                        @break
-                    @case(App\Models\Curso::TURNO_ENUM['noturno'])
-                        Noturno
-                        @break 
-                    @case(App\Models\Curso::TURNO_ENUM['integral'])
-                        Integral
-                        @break 
-                    @endswitch
-                </h3>
                 @foreach ($collect as $j => $inscricoes)
+                <div style="position: fixed; top: -50px;border: 3px solid #ffffff;width: 80%;height: 20px;background-color:#ffffff;">
+                    <h3 style="left: 15px; width: 100%;" class="subtitulo"></h3>
+                </div>
+                <div style="position: fixed; top: -30px;">
+                    <h3 style="left: 15px; width: 100%;" class="subtitulo">Curso: {{$collect->first()->first()->curso->nome}} - @switch($collect->first()->first()->curso->turno)
+                        @case(App\Models\Curso::TURNO_ENUM['matutino'])
+                            Matutino
+                            @break
+                        @case(App\Models\Curso::TURNO_ENUM['vespertino'])
+                            Vespertino
+                            @break
+                        @case(App\Models\Curso::TURNO_ENUM['noturno'])
+                            Noturno
+                            @break
+                        @case(App\Models\Curso::TURNO_ENUM['integral'])
+                            Integral
+                            @break
+                        @endswitch
+                    </h3>
+                </div>
                     <div class="body">
                         <div id="modalidade" @if($inscricoes->count() <= 40) style="page-break-inside: avoid;" @endif>
                             <h4 class="acao_afirmativa">@if($inscricoes[0]->no_modalidade_concorrencia == 'que tenham cursado integralmente o ensino médio em qualquer uma das escolas situadas nas microrregiões do Agreste ou do Sertão de Pernambuco.' ||
